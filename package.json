@@ -1,0 +1,28 @@
+{
+  "name": "Tracthon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "next": "^9.5.2",
+    "query-string": "^6.13.1",
+    "react": "^16.13.1",
+    "react-cookie": "^4.0.3",
+    "react-dom": "^16.13.1",
+    "react-hook-form": "^6.7.1",
+    "simple-peer": "^9.7.2",
+    "socket.io-client": "^2.3.0",
+    "styled-components": "^5.2.0",
+    "swr": "^0.3.2"
+  }
+}
