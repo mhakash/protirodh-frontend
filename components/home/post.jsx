@@ -91,7 +91,7 @@ const Post = ({ post }) => {
       headers: { "Content-Type": "application/json", token: cookies["token"] },
       body: JSON.stringify({ comment: data.comment, _id: post._id }),
     };
-    const res = await fetch("http://localhost:5000/api/posts/comment", requestOptions);
+    const res = await fetch("https://protirodh.herokuapp.com/api/posts/comment", requestOptions);
     const dataBack = await res.json();
     //const { error, name } = dataBack;
     console.log(dataBack);

@@ -66,7 +66,7 @@ const Header = () => {
         method: "GET",
         headers: { "Content-Type": "application/json", token },
       };
-      const res = await fetch("http://localhost:5000/api/users/me", requestOptions);
+      const res = await fetch("https://protirodh.herokuapp.com/api/users/me", requestOptions);
       const data = await res.json();
       const { error, name } = data;
       if (name) setCurrentUser(name);

@@ -12,7 +12,7 @@ import Container from "@material-ui/core/Container";
 
 import { useForm } from "react-hook-form";
 import { useCookies } from "react-cookie";
-const server = "http://localhost:5000/api";
+const server = "https://protirodh.herokuapp.com/api";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

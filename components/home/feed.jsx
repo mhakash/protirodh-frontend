@@ -24,7 +24,7 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 const Feed = () => {
   const classes = useStyles();
   const [posts, setPosts] = useState([]);
-  const { data, error } = useSWR("http://localhost:5000/api/posts", fetcher, { refreshInterval: 10 });
+  const { data, error } = useSWR("https://protirodh.herokuapp.com/api/posts", fetcher, { refreshInterval: 10 });
 
   return (
     <React.Fragment>

@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const server = "http://localhost:5000/api";
+const server = "https://protirodh.herokuapp.com/api";
 
 const SignupForm = () => {
   const classes = useStyles();

@@ -46,7 +46,7 @@ const PostForm = () => {
   const [cookies, setCookie, removeCookie] = useCookies();
   const [loggedIn, setLoggedIn] = useState(false);
   const { register, handleSubmit } = useForm();
-  const END = "http://localhost:5000/api";
+  const END = "https://protirodh.herokuapp.com/api";
 
   useEffect(() => {
     const token = cookies["token"];
@@ -55,7 +55,7 @@ const PostForm = () => {
         method: "GET",
         headers: { "Content-Type": "application/json", token },
       };
-      const res = await fetch("http://localhost:5000/api/users/me", requestOptions);
+      const res = await fetch("https://protirodh.herokuapp.com/api/users/me", requestOptions);
       const data = await res.json();
       const { error, name } = data;
       if (name) setLoggedIn(true);

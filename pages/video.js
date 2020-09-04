@@ -36,13 +36,18 @@ function App() {
   const socket = useRef();
 
   useEffect(() => {
-    socket.current = io.connect("http://localhost:5000");
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then((stream) => {
-      setStream(stream);
-      if (userVideo.current) {
-        userVideo.current.srcObject = stream;
-      }
-    });
+    socket.current = io.connect("https://protirodh.herokuapp.com/");
+    navigator.mediaDevices
+      .getUserMedia({
+        video: true,
+        audio: true,
+      })
+      .then((stream) => {
+        setStream(stream);
+        if (userVideo.current) {
+          userVideo.current.srcObject = stream;
+        }
+      });
 
     socket.current.on("yourID", (id) => {
       setYourID(id);
@@ -80,7 +85,11 @@ function App() {
     });
 
     peer.on("signal", (data) => {
-      socket.current.emit("callUser", { userToCall: id, signalData: data, from: yourID });
+      socket.current.emit("callUser", {
+        userToCall: id,
+        signalData: data,
+        from: yourID,
+      });
     });
 
     peer.on("stream", (stream) => {
@@ -103,7 +112,10 @@ function App() {
       stream: stream,
     });
     peer.on("signal", (data) => {
-      socket.current.emit("acceptCall", { signal: data, to: caller });
+      socket.current.emit("acceptCall", {
+        signal: data,
+        to: caller,
+      });
     });
 
     peer.on("stream", (stream) => {
@@ -127,26 +139,31 @@ function App() {
   if (receivingCall) {
     incomingCall = (
       <div>
-        <h1>{caller} is calling you</h1>
-        <button onClick={acceptCall}>Accept</button>
+        <h1>
+          {" "}
+          {caller}
+          is calling you{" "}
+        </h1>{" "}
+        <button onClick={acceptCall}> Accept </button>{" "}
       </div>
     );
   }
   return (
     <Container>
       <Row>
-        {UserVideo}
-        {PartnerVideo}
-      </Row>
+        {" "}
+        {UserVideo} {PartnerVideo}{" "}
+      </Row>{" "}
       <Row>
+        {" "}
         {Object.keys(users).map((key) => {
           if (key === yourID) {
             return null;
           }
-          return <button onClick={() => callPeer(key)}>Call {key}</button>;
-        })}
-      </Row>
-      <Row>{incomingCall}</Row>
+          return <button onClick={() => callPeer(key)}> Call {key} </button>;
+        })}{" "}
+      </Row>{" "}
+      <Row> {incomingCall} </Row>{" "}
     </Container>
   );
 }
