@@ -35,7 +35,7 @@ const AssistanceType = ({ setStep, setFormData }) => {
           </Button>
 
           <Typography variant="body1" style={{ marginTop: 5 }}>
-            This impressive paella is a perfect party dish and a fun meal to cook together with your guests.
+            আইনি সমাধানের উপায়গুলো সম্পর্কে জানুন। অভিজ্ঞ পরামর্শকের সাথে কথা বলুন।
           </Typography>
         </Grid>
 
@@ -52,7 +52,7 @@ const AssistanceType = ({ setStep, setFormData }) => {
           </Button>
 
           <Typography variant="body1" style={{ marginTop: 5 }}>
-            This impressive paella is a perfect party dish and a fun meal to cook together with your guests.
+            সরাসরি আইন শৃংখলা বাহিনী (পুলিশ) এর সাথে যোগাযোগ ও সাধারণ ডায়রি অথবা মামলা করুন।
           </Typography>
         </Grid>
       </Grid>

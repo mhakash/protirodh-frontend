@@ -55,7 +55,10 @@ const PostForm = () => {
         method: "GET",
         headers: { "Content-Type": "application/json", token },
       };
-      const res = await fetch("https://protirodh.herokuapp.com/api/users/me", requestOptions);
+      const res = await fetch(
+        "https://protirodh.herokuapp.com/api/users/me",
+        requestOptions
+      );
       const data = await res.json();
       const { error, name } = data;
       if (name) setLoggedIn(true);
@@ -71,9 +74,15 @@ const PostForm = () => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json", token: cookies["token"] },
-      body: JSON.stringify({ post: data.postContent, anonymous: data.anonymous }),
+      body: JSON.stringify({
+        post: data.postContent,
+        anonymous: data.anonymous,
+      }),
     };
-    const res = await fetch("http://localhost:5000/api/posts/add", requestOptions);
+    const res = await fetch(
+      "https://protirodh.herokuapp.com/api/posts/add",
+      requestOptions
+    );
     const resData = await res.json();
     console.log(resData);
     e.target.reset();
@@ -81,7 +90,10 @@ const PostForm = () => {
 
   return (
     <Card className={classes.root}>
-      <CardHeader avatar={<Avatar className={classes.avatar}>আ</Avatar>} title="আপনি" />
+      <CardHeader
+        avatar={<Avatar className={classes.avatar}>আ</Avatar>}
+        title="আপনি"
+      />
 
       <Divider variant="middle" />
 

@@ -87,7 +87,13 @@ const LoginForm = ({ handleClose }) => {
             label="পাসওয়ার্ড"
             type="password"
           />
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
             লগইন করুন
           </Button>
           {loginError ? "Login failed" : null} <br />

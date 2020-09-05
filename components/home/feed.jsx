@@ -24,7 +24,11 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 const Feed = () => {
   const classes = useStyles();
   const [posts, setPosts] = useState([]);
-  const { data, error } = useSWR("https://protirodh.herokuapp.com/api/posts", fetcher, { refreshInterval: 10 });
+  const { data, error } = useSWR(
+    "https://protirodh.herokuapp.com/api/posts",
+    fetcher,
+    { refreshInterval: 10 }
+  );
 
   return (
     <React.Fragment>
@@ -33,10 +37,9 @@ const Feed = () => {
       </Typography>
       {/* {error ? "error" : data.posts.toString()} */}
       <Divider classes={{ root: classes.divider }} />
-      {data ? data.posts.map((post) => <Post post={post} key={post._id} />) : ""}
-      <Post post={{ content: testContent, author: "testuser" }} />
-      <Post post={{ content: testContent, author: "testuser" }} />
-      <Post post={{ content: testContent, author: "testuser" }} />
+      {data
+        ? data.posts.map((post) => <Post post={post} key={post._id} />)
+        : ""}
     </React.Fragment>
   );
 };

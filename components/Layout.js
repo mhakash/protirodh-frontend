@@ -7,6 +7,7 @@ const Layout = (props) => (
   <React.Fragment>
     <Head>
       <title>Protirodh</title>
+      <link rel="shortcut icon" href="/favicon.ico" />
     </Head>
 
     <CookiesProvider>

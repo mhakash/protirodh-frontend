@@ -98,14 +98,20 @@ const SignupForm = () => {
             type="password"
           />
           {error ? "error occured" : null}
-          <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
             সাইন আপ
           </Button>
         </form>
 
         <Typography align="center" variant="body1" style={{ marginTop: 20 }}>
-          আপনি আপনার আসল নাম ব্যবহার করতে পারেন অথবা ছদ্মনাম ব্যবহার করতে পারেন। আপনার সাহায্যের জন্যই এই তথ্যটুকু
-          প্রয়োজন।
+          আপনি আপনার আসল নাম ব্যবহার করতে পারেন অথবা ছদ্মনাম ব্যবহার করতে পারেন।
+          আপনার সাহায্যের জন্যই এই তথ্যটুকু প্রয়োজন।
         </Typography>
       </div>
     </Container>

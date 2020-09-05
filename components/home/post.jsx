@@ -91,7 +91,10 @@ const Post = ({ post }) => {
       headers: { "Content-Type": "application/json", token: cookies["token"] },
       body: JSON.stringify({ comment: data.comment, _id: post._id }),
     };
-    const res = await fetch("https://protirodh.herokuapp.com/api/posts/comment", requestOptions);
+    const res = await fetch(
+      "https://protirodh.herokuapp.com/api/posts/comment",
+      requestOptions
+    );
     const dataBack = await res.json();
     //const { error, name } = dataBack;
     console.log(dataBack);
@@ -105,7 +108,10 @@ const Post = ({ post }) => {
         avatar={
           <Avatar
             className={classes.avatar}
-            style={{ backgroundColor: avatarColor[post.author[0].charCodeAt(0) % avatarColor.length] }}
+            style={{
+              backgroundColor:
+                avatarColor[post.author[0].charCodeAt(0) % avatarColor.length],
+            }}
           >
             {post.author[0]}
           </Avatar>
@@ -129,12 +135,20 @@ const Post = ({ post }) => {
 
       <CardActions disableSpacing>
         <IconButton onClick={handleLike}>
-          {liked ? <FavoriteIcon style={{ color: red[500] }} /> : <FavoriteIcon />}
+          {liked ? (
+            <FavoriteIcon style={{ color: red[500] }} />
+          ) : (
+            <FavoriteIcon />
+          )}
         </IconButton>
 
         {likes}
 
-        <IconButton style={{ marginLeft: "auto" }} onClick={handleExpandClick} aria-expanded={expanded}>
+        <IconButton
+          style={{ marginLeft: "auto" }}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+        >
           <Typography variant="body2">মন্তব্যসমূহ</Typography>
           <ExpandMoreIcon
             className={clsx(classes.expand, {
@@ -148,15 +162,23 @@ const Post = ({ post }) => {
         <Divider />
         <CardContent>
           {post.comments
-            ? post.comments.map((comment) => {
+            ? post.comments.map((comment, index) => {
                 return (
                   <React.Fragment>
-                    <Grid container key={comment._id} style={{ marginBottom: 10 }}>
+                    <Grid
+                      container
+                      key={comment._id}
+                      style={{ marginBottom: 10 }}
+                    >
                       <Grid item xs={1}>
                         <Avatar
                           className={classes.avatarComment}
                           style={{
-                            backgroundColor: avatarColor[comment.author[0].charCodeAt(0) % avatarColor.length],
+                            backgroundColor:
+                              avatarColor[
+                                comment.author[0].charCodeAt(0) %
+                                  avatarColor.length
+                              ],
                           }}
                         >
                           {comment.author[0]}
@@ -164,7 +186,13 @@ const Post = ({ post }) => {
                       </Grid>
                       <Grid item xs={11}>
                         <Typography>
-                          {<b>{comment.author}</b>} {comment.content}
+                          {<b>{comment.author}</b>}{" "}
+                          {index === 0 ? (
+                            <text style={{ color: colors.grey[600] }}>
+                              [Expert]{" "}
+                            </text>
+                          ) : null}
+                          {comment.content}
                         </Typography>
                       </Grid>
                     </Grid>

@@ -4,6 +4,8 @@ import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
 
+import Layout from "../components/Layout";
+
 const Container = styled.div`
   height: 100vh;
   width: 100%;
@@ -148,23 +150,26 @@ function App() {
       </div>
     );
   }
+
   return (
-    <Container>
-      <Row>
-        {" "}
-        {UserVideo} {PartnerVideo}{" "}
-      </Row>{" "}
-      <Row>
-        {" "}
-        {Object.keys(users).map((key) => {
-          if (key === yourID) {
-            return null;
-          }
-          return <button onClick={() => callPeer(key)}> Call {key} </button>;
-        })}{" "}
-      </Row>{" "}
-      <Row> {incomingCall} </Row>{" "}
-    </Container>
+    <Layout>
+      <Container style={{ paddingTop: 60 }}>
+        <Row>
+          {" "}
+          {UserVideo} {PartnerVideo}{" "}
+        </Row>{" "}
+        <Row>
+          {" "}
+          {Object.keys(users).map((key) => {
+            if (key === yourID) {
+              return null;
+            }
+            return <button onClick={() => callPeer(key)}> Call {key} </button>;
+          })}{" "}
+        </Row>{" "}
+        <Row> {incomingCall} </Row>{" "}
+      </Container>
+    </Layout>
   );
 }
 

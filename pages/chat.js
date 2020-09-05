@@ -67,18 +67,14 @@ const Chat = () => {
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
-    messagesEndRef.current.scrollIntoView({
-      behavior: "smooth",
-    });
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(scrollToBottom, [chat]);
 
   useEffect(() => {
     socket = io(API_END);
-    socket.emit("join", {
-      name: "akash",
-    });
+    socket.emit("join", { name: "akash" });
     const data = fetch(`${API_END}/api/chat`)
       .then((res) => res.json())
       .then((data) => {
@@ -90,96 +86,67 @@ const Chat = () => {
     socket.on("sendMessage", (message) => {
       console.log("receive", message);
 
-      setChat([
-        ...chat,
-        {
-          type: "received",
-          msg: message,
-        },
-      ]);
+      setChat([...chat, { type: "received", msg: message }]);
     });
   }, [chat]);
 
   const onSubmit = (data, e) => {
     console.log("send", data.input);
     socket.emit("message", data.input);
-    setChat([
-      ...chat,
-      {
-        type: "sent",
-        msg: data.input,
-      },
-    ]);
+    setChat([...chat, { type: "sent", msg: data.input }]);
     e.target.reset();
   };
 
   return (
     <Layout>
       <Grid container>
-        <Grid item lg={4} xs={0}>
-          {" "}
-        </Grid>
+        <Grid item lg={4} xs={0}></Grid>
+
         <Grid item lg={4} xs={12}>
           <div className={classes.container}>
-            <div
-              style={{
-                padding: 15,
-                overflowY: "auto",
-              }}
-            >
-              {" "}
+            <div style={{ padding: 15, overflowY: "auto" }}>
               {chat.length > 0 &&
                 chat.map((text, index) =>
                   text.type === "received" ? (
                     <div align="left">
                       <Paper
                         className={classes.textContainer}
-                        style={{
-                          backgroundColor: colors.teal[500],
-                        }}
+                        style={{ backgroundColor: colors.teal[500] }}
                         align="left"
                         key={index}
                       >
                         <Typography
                           className={classes.text}
-                          style={{
-                            color: "white",
-                          }}
+                          style={{ color: "white" }}
                           variant="body1"
                         >
-                          {" "}
-                          {text.msg}{" "}
-                        </Typography>{" "}
-                      </Paper>{" "}
+                          {text.msg}
+                        </Typography>
+                      </Paper>
                     </div>
                   ) : (
                     <div align="right">
                       <Paper
                         className={classes.textContainer}
-                        style={{
-                          backgroundColor: colors.grey[100],
-                        }}
+                        style={{ backgroundColor: colors.grey[100] }}
                         align="right"
                         key={index}
                       >
                         <Typography className={classes.text} variant="body1">
-                          {" "}
-                          {text.msg}{" "}
-                        </Typography>{" "}
-                      </Paper>{" "}
+                          {text.msg}
+                        </Typography>
+                      </Paper>
                     </div>
                   )
-                )}{" "}
-              <div ref={messagesEndRef}> </div>{" "}
+                )}
+              <div ref={messagesEndRef}></div>
             </div>
+
             <form onSubmit={handleSubmit(onSubmit)}>
               <Paper
                 square
                 elevation={5}
-                style={{
-                  padding: 20,
-                  backgroundColor: "white",
-                }}
+                style={{ padding: 20, backgroundColor: "white" }}
               >
                 <Grid container alignItems="center" spacing={1}>
                   <Grid item xs={10}>
@@ -193,22 +160,22 @@ const Chat = () => {
                       fullWidth
                       variant="outlined"
                     />
-                  </Grid>{" "}
+                  </Grid>
                   <Grid item xs={2} align="center">
                     <Button type="submit" variant="contained" color="primary">
-                      সেন্ ড{" "}
-                    </Button>{" "}
-                  </Grid>{" "}
-                </Grid>{" "}
+                      সেন্ড
+                    </Button>
+                  </Grid>
+                </Grid>
               </Paper>
-              {errors.exampleRequired && <span> This field is required </span>}{" "}
-            </form>{" "}
-          </div>{" "}
+
+              {errors.exampleRequired && <span>This field is required</span>}
+            </form>
+          </div>
         </Grid>
-        <Grid item lg={4} xs={0}>
-          {" "}
-        </Grid>{" "}
-      </Grid>{" "}
+
+        <Grid item lg={4} xs={0}></Grid>
+      </Grid>
     </Layout>
   );
 };

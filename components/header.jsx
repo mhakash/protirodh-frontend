@@ -66,7 +66,10 @@ const Header = () => {
         method: "GET",
         headers: { "Content-Type": "application/json", token },
       };
-      const res = await fetch("https://protirodh.herokuapp.com/api/users/me", requestOptions);
+      const res = await fetch(
+        "https://protirodh.herokuapp.com/api/users/me",
+        requestOptions
+      );
       const data = await res.json();
       const { error, name } = data;
       if (name) setCurrentUser(name);
@@ -88,7 +91,11 @@ const Header = () => {
     <React.Fragment>
       <AppBar position="fixed" style={{ backgroundColor: colors.teal[800] }}>
         <Toolbar>
-          <Grid container alignItems="center" style={{ marginTop: 2, marginBottom: 2 }}>
+          <Grid
+            container
+            alignItems="center"
+            style={{ marginTop: 2, marginBottom: 2 }}
+          >
             <Grid item lg={1} xs={0}></Grid>
 
             <Hidden smUp>
@@ -157,11 +164,21 @@ const Header = () => {
                   </Link>
 
                   {!currentUser ? (
-                    <Button size="large" align="right" color="inherit" onClick={handleClickOpen}>
+                    <Button
+                      size="large"
+                      align="right"
+                      color="inherit"
+                      onClick={handleClickOpen}
+                    >
                       লগইন
                     </Button>
                   ) : (
-                    <Button size="large" align="right" color="inherit" onClick={handleLogout}>
+                    <Button
+                      size="large"
+                      align="right"
+                      color="inherit"
+                      onClick={handleLogout}
+                    >
                       লগআউট
                     </Button>
                   )}
@@ -207,7 +224,7 @@ const Header = () => {
 
             <Divider classes={{ root: classes.divider }} />
 
-            <Link href="/assistance">
+            <Link href="/know">
               <ListItem button color="inherit">
                 আপনি জানেন কি?
               </ListItem>
@@ -215,7 +232,7 @@ const Header = () => {
 
             <Divider classes={{ root: classes.divider }} />
 
-            <Link href="/assistance">
+            <Link href="/faq">
               <ListItem button color="inherit">
                 FAQ
               </ListItem>
@@ -223,7 +240,7 @@ const Header = () => {
 
             <Divider classes={{ root: classes.divider }} />
 
-            <Link href="/assistance">
+            <Link href="/law">
               <ListItem button color="inherit">
                 আইন জানুন
               </ListItem>
@@ -237,7 +254,10 @@ const Header = () => {
               </ListItem>
             </Link>
 
-            <Divider classes={{ root: classes.divider }} style={{ marginBottom: 10 }} />
+            <Divider
+              classes={{ root: classes.divider }}
+              style={{ marginBottom: 10 }}
+            />
           </List>
         </Collapse>
       </AppBar>

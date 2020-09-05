@@ -7,6 +7,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles({
   root: {
@@ -36,6 +37,8 @@ const ExpertPlacard = () => {
   return (
     <Card className={classes.root}>
       <CardHeader title="অভিজ্ঞ ব্যাক্তির সাথে কথা বলুন" />
+
+      <Divider />
 
       <CardContent>
         <Typography variant="body2" component="p">
